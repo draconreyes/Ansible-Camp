@@ -31,6 +31,11 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
         
+    - name: Debug inventory output
+      working-directory: taller3
+      run: |
+        ansible-inventory -i inventario.aws_ec2.yml --list
+        
     - name: Run Ansible playbook
       working-directory: taller3
       run: |
