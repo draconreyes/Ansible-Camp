@@ -17,7 +17,6 @@ jobs:
         mkdir -p ~/.ssh
         echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_ed25519
         chmod 600 ~/.ssh/id_ed25519
-        ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
     - name: Install Ansible
       run: |
@@ -26,4 +25,4 @@ jobs:
 
     - name: Run Ansible playbook
       run: |
-        ansible-playbook -i "${{ secrets.EC2_HOST }}," -u ${{ secrets.EC2_USER }} playbook.yml --private-key ~/.ssh/id_ed25519
+        ansible-playbook crud.yml --private-key ~/.ssh/id_ed25519
