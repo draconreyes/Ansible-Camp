@@ -22,7 +22,13 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y ansible
-
+        
+    - name: Install Ansible
+      run: |
+        sudo apt update
+        sudo apt install -y ansible
+        cd taller3
+        
     - name: Run Ansible playbook
       run: |
-        ansible-playbook taller3/crud.yml --private-key ~/.ssh/id_ed25519
+        ansible-playbook crud.yml --private-key ~/.ssh/id_ed25519
