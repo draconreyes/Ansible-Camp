@@ -18,14 +18,12 @@ jobs:
         echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_ed25519
         chmod 600 ~/.ssh/id_ed25519
         
-    - name: Install Ansible
+    - name: Set up Python & install Ansible + boto3
       run: |
-        sudo apt update
-        sudo apt install -y ansible
-
-    - name: Install boto3 and botocore inside Ansible Python env
-      run: |
-        /opt/pipx/venvs/ansible-core/bin/pip install boto3 botocore
+        python3 -m venv ansible-env
+        source ansible-env/bin/activate
+        pip install --upgrade pip
+        pip install ansible boto3 botocore
         ansible-galaxy collection install amazon.aws
 
     - name: Configure AWS credentials
