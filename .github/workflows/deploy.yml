@@ -30,5 +30,6 @@ jobs:
         cd taller3
         
     - name: Run Ansible playbook
+      working-directory: taller3
       run: |
         ansible-playbook crud.yml --private-key ~/.ssh/id_ed25519
