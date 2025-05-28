@@ -25,4 +25,4 @@ jobs:
 
     - name: Run Ansible playbook
       run: |
-        ansible-playbook crud.yml --private-key ~/.ssh/id_ed25519
+        ansible-playbook taller3/crud.yml --private-key ~/.ssh/id_ed25519
