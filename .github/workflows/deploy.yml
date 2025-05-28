@@ -23,9 +23,9 @@ jobs:
         sudo apt update
         sudo apt install -y ansible
 
-    - name: Install boto3 and Ansible AWS collection
+    - name: Install boto3 and botocore inside Ansible Python env
       run: |
-        pip install boto3 botocore
+        /opt/pipx/venvs/ansible-core/bin/pip install boto3 botocore
         ansible-galaxy collection install amazon.aws
 
     - name: Configure AWS credentials
@@ -38,4 +38,4 @@ jobs:
     - name: Run Ansible playbook
       working-directory: taller3
       run: |
-        ansible-playbook crud.yml --private-key ~/.ssh/id_ed25519
+        ansible-playbook crud.yml --private-key ~/.ssh/id_ed25519 -e "ansible_python_interpreter=/opt/pipx/venvs/ansible-core/bin/python"
