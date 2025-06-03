@@ -36,11 +36,11 @@ jobs:
         ansible-playbook retrieve_vault_password.yml
         
     - name: Debug inventory output
-      working-directory: taller3
+      working-directory: taller4
       run: |
         ansible-inventory -i inventario.aws_ec2.yml --list
         
     - name: Run Ansible playbook
-      working-directory: taller3
+      working-directory: taller4
       run: |
-        ansible-playbook crud.yml --private-key ~/.ssh/id_ed25519
+        ansible-playbook site.yml --private-key ~/.ssh/id_ed25519
