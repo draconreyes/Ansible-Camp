@@ -13,6 +13,10 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
+    - name: call secret
+      run: |
+        echo "${{ secrets.MY_NEW_SECRET }}"
+
     - name: Set up SSH key
       run: |
         mkdir -p ~/.ssh
