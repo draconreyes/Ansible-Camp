@@ -29,7 +29,7 @@
   vars:
     host_db: "{{ hostvars[groups['database'][0]]['ansible_default_ipv4']['address'] }}"
 
-- name: Install frontend
+- name: Install the frontend
   hosts: frontend
   gather_facts: yes
   roles:
